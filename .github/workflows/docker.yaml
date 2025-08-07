@@ -1,5 +1,5 @@
 # Testing docker build push wit h remote
-name: Test Docker Build
+name: Docker Build
 on:
   push:
     paths:
@@ -10,7 +10,7 @@ jobs:
   build:
     uses: exploring-gh-organizations/called/.github/workflows/docker.yaml@main
     with:
-      repo-name:: "code-quality"
+      repo-name: "code-quality"
       context: "."
     secrets:
       DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
