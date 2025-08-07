@@ -11,4 +11,6 @@ jobs:
     with:
       docker-repo: "reinhuddev1/code-quality"
       context: "."
-    secrets: inherit
+    secrets:
+      DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
