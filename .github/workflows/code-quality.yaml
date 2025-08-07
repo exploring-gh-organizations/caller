@@ -1,0 +1,9 @@
+name: Code Quality
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  code-quality:
+    uses: exploring-gh-organizations/called/.github/workflows/code-quality.yaml@main
