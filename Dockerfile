@@ -1,7 +1,7 @@
 FROM python:3.12-slim
 
 # Build args
-ARG PRECOMMIT_CONFIG_PATH="../../config/pre-commit-config.yaml"
+ARG PRECOMMIT_CONFIG_PATH="pre-commit-config.yaml"
 ARG GIT_USER_EMAIL="ci@localhost"
 ARG GIT_USER_NAME="CI Bot"
 
