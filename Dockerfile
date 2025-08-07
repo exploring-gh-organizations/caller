@@ -1,5 +1,5 @@
 # Multi-stage build for smaller final image
-FROM python:3.12-slim as builder
+FROM python:3.12-slim AS builder
 
 # Install build dependencies
 RUN apt-get update && apt-get install -y \
@@ -38,7 +38,7 @@ RUN npm install -g \
 FROM python:3.12-slim
 
 # Build arg for pre-commit config path
-ARG PRECOMMIT_CONFIG_PATH=".pre-commit-config.yaml"
+ARG PRECOMMIT_CONFIG_PATH="../../config/pre-commit-config.yaml"
 ARG GIT_USER_EMAIL="ci@localhost"
 ARG GIT_USER_NAME="CI Bot"
 
@@ -47,8 +47,12 @@ RUN apt-get update && apt-get install -y \
     git \
     curl \
     shellcheck \
-    hadolint \
+    wget \
     && rm -rf /var/lib/apt/lists/*
+
+# Install hadolint separately
+RUN wget -O /usr/local/bin/hadolint https://github.com/hadolint/hadolint/releases/download/v2.12.0/hadolint-Linux-x86_64 \
+    && chmod +x /usr/local/bin/hadolint
 
 # Install Node.js for runtime
 RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
