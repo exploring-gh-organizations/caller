@@ -6,8 +6,7 @@ jobs:
   build:
     uses: exploring-gh-organizations/called/.github/workflows/docker.yaml@main
     with:
-      docker-username: ${{ var.DOCKERHUB_USERNAME }}
-      docker-repo: "${{ var.DOCKERHUB_USERNAME }}/code-quality"
+      docker-repo: "${{ secrets.DOCKERHUB_USERNAME }}/code-quality"
       context: "."
       build-args: |
         PRECOMMIT_CONFIG_PATH=../../config/pre-commit-config.yaml
