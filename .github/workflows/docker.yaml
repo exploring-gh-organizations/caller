@@ -9,7 +9,7 @@ jobs:
   build:
     uses: exploring-gh-organizations/called/.github/workflows/docker.yaml@main
     with:
-      docker-repo: "${{ secrets.DOCKER_USERNAME }}/code-quality"
+      repo-name:: "code-quality"
       context: "."
     secrets:
       DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
