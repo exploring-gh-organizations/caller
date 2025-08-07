@@ -8,8 +8,6 @@ jobs:
     with:
       docker-repo: "reinhuddev1/code-quality"
       context: "."
-      build-args: |
-        PRECOMMIT_CONFIG_PATH=../../pre-commit-config.yaml
     secrets:
       DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
       DOCKER_USERNAME: ${{ vars.DOCKER_USERNAME }}
