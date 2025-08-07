@@ -1,0 +1,9 @@
+name: Python Tests
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  test:
+    uses: exploring-gh-organizations/called/.github/workflows/python-test.yaml@main
