@@ -1,4 +1,4 @@
-FROM python:3.12-slim
+FROM python:3.12-alpine
 
 # Build args
 ARG PRECOMMIT_CONFIG_PATH="pre-commit-config.yaml"
@@ -6,21 +6,18 @@ ARG GIT_USER_EMAIL="ci@localhost"
 ARG GIT_USER_NAME="CI Bot"
 
 # Install system dependencies
-RUN apt-get update && apt-get install -y \
+RUN apk add --no-cache \
     git \
     curl \
     shellcheck \
+    nodejs \
+    npm \
     wget \
-    && rm -rf /var/lib/apt/lists/*
+    bash
 
 # Install hadolint
 RUN wget -O /usr/local/bin/hadolint https://github.com/hadolint/hadolint/releases/download/v2.12.0/hadolint-Linux-x86_64 \
     && chmod +x /usr/local/bin/hadolint
-
-# Install Node.js
-RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
-    && apt-get install -y nodejs \
-    && rm -rf /var/lib/apt/lists/*
 
 # Install Python tools
 RUN pip install --no-cache-dir --upgrade pip setuptools>=78.1.1
