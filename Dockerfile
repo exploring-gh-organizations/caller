@@ -37,7 +37,7 @@ RUN npm install -g \
 WORKDIR /workspace
 
 # Set git config
-RUN git config --global --add safe.directory /workspace \
+RUN git config --global --add safe.directory '*' \
     && git config --global user.email "${GIT_USER_EMAIL}" \
     && git config --global user.name "${GIT_USER_NAME}"
 
