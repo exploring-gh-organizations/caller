@@ -1,0 +1,16 @@
+name: Test Docker Build
+on:
+  push:
+
+jobs:
+  build:
+    uses: exploring-gh-organizations/called/.github/workflows/docker.yaml@main
+    with:
+      docker-username: ${{ var.DOCKERHUB_USERNAME }}
+      docker-repo: "${{ var.DOCKERHUB_USERNAME }}/code-quality"
+      context: "."
+      build-args: |
+        PRECOMMIT_CONFIG_PATH=../../config/pre-commit-config.yaml
+    secrets:
+      DOCKER_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
