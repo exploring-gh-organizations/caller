@@ -1,6 +1,9 @@
 name: Test Docker Build
 on:
   push:
+    paths:
+      - 'Dockerfile'
+      - '.github/workflows/docker.yaml'
 
 jobs:
   build:
