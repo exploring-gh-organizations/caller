@@ -43,9 +43,8 @@ RUN git config --global --add safe.directory /workspace \
     && git config --global user.email "${GIT_USER_EMAIL}" \
     && git config --global user.name "${GIT_USER_NAME}"
 
-# Copy pre-commit config and install hooks
+# Copy pre-commit config
 COPY ${PRECOMMIT_CONFIG_PATH} /app/.pre-commit-config.yaml
-RUN cd /app && pre-commit install-hooks
 
-# Simple entrypoint
-CMD ["sh", "-c", "cp /app/.pre-commit-config.yaml . && pre-commit run --all-files"]
+# Simple entrypoint - install hooks at runtime when git repo is available
+CMD ["sh", "-c", "cp /app/.pre-commit-config.yaml . && pre-commit install-hooks && pre-commit run --all-files"]
