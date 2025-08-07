@@ -6,14 +6,15 @@ ARG GIT_USER_EMAIL="ci@localhost"
 ARG GIT_USER_NAME="CI Bot"
 
 # Install system dependencies
-RUN apk add --no-cache \
+RUN apk add --no-cache --upgrade \
     git \
     curl \
     shellcheck \
     nodejs \
     npm \
     wget \
-    bash
+    bash \
+    sqlite
 
 # Install hadolint
 RUN wget -O /usr/local/bin/hadolint https://github.com/hadolint/hadolint/releases/download/v2.12.0/hadolint-Linux-x86_64 \
